@@ -1,0 +1,71 @@
+﻿@model HotelBooking.Models.EditOrderViewModel
+
+@{
+    ViewBag.Title = "EditOrder";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-6 col-md-offset-3">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <dl class="dl-horizontal">
+            <div class="well">
+                <dt>
+                    @Html.DisplayNameFor(model => model.NumberOfBeds)
+                </dt>
+
+                <dd>
+                    @Html.HiddenFor(model => model.NumberOfBeds)
+                    @Html.DisplayFor(model => model.NumberOfBeds)
+                </dd>
+            </div>
+            <div class="well">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Category)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Category)
+                    @Html.HiddenFor(model => model.Category)
+                </dd>
+            </div>
+            <div class="well">
+                <dt>
+                    @Html.DisplayNameFor(model => model.ArrivalTime)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ArrivalTime)
+                    @Html.HiddenFor(model => model.ArrivalTime)
+                </dd>
+            </div>
+            <div class="well">
+                <dt>
+                    @Html.DisplayNameFor(model => model.DepartureTime)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.DepartureTime)
+                    @Html.HiddenFor(model => model.DepartureTime)
+                </dd>
+            </div>
+            <div class="well">
+                <dt>
+                    Ціна
+                </dt>
+                <dd>
+                    <div class="btn-group">
+                        @Html.DropDownListFor(model => model.RoomId, Model.Costs, new { @class = "btn btn-default dropdown-toggle" })
+                    </div>
+                </dd>
+            </div>
+
+        </dl>
+        <div>
+            <input type="submit" value="Додати" class="btn btn-default btn-block" />
+        </div>
+    }
+</div>
+

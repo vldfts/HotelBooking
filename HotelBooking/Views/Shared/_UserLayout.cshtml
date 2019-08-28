@@ -1,0 +1,84 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <style>
+        /* Remove the navbar's default margin-bottom and rounded borders */
+        .navbar {
+            margin-bottom: 0;
+            border-radius: 0;
+        }
+
+        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+        .row.content {
+            height: 880px;
+        }
+
+        /* Set gray background color and 100% height */
+        .sidenav {
+            padding-top: 20px;
+            background-color: #f1f1f1;
+            height: 100%;
+        }
+
+        /* Set black background color, white text and some padding */
+        footer {
+            background-color: #555;
+            color: white;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Navbar</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                @Html.Action("Menu", "Nav")
+                <div style="margin-right:50px">
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid text-center ">
+        <div class="row content">
+            <div class="col-sm-2 sidenav">
+            </div>
+            <div class="col-sm-8 text-center" style="margin-top:100px">
+                <div>
+                    @if (TempData["message"] != null)
+                    {
+                        if (TempData["color"] == null)
+                        {
+                            <div class="alert alert-danger">@TempData["message"]</div>
+
+                        }
+                        else
+                        {
+                            <div class="alert alert-success">@TempData["message"]</div>
+                        }
+                    }
+                </div>
+                @RenderBody()
+            </div>
+            <div class="col-sm-2 sidenav">
+            </div>
+        </div>
+    </div>
+    <footer class="container-fluid text-center">
+        <p>&copy; @DateTime.Now</p>
+    </footer>
+</body>
+</html>

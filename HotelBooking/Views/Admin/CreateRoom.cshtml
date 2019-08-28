@@ -1,0 +1,45 @@
+﻿@model HotelBooking.Models.CreateRoomViewModel
+
+@{
+    ViewBag.Title = "CreateRoom";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+<div class="col-md-6 col-md-offset-3">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group" style="margin-top:50px">
+                @Html.LabelFor(model => model.NumberOfBeds, htmlAttributes: new { @class = "col-md-6" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.NumberOfBeds, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NumberOfBeds, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top:50px">
+                @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "col-md-4" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.Category, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group" style="margin-top:50px">
+                @Html.LabelFor(model => model.Cost, htmlAttributes: new { @class = "col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Cost, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Cost, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top:50px">
+                @Html.ActionLink("Назад до списку", "RoomList", null, new { @class = "btn btn-default" })
+                <input type="submit" value="Додати кімнату" class="btn btn-default" />
+            </div>
+        </div>
+    }
+
+</div>

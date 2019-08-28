@@ -1,0 +1,51 @@
+﻿@model HotelBooking.Models.CreateOrderViewModel
+
+@{
+    ViewBag.Title = "CreateOrder";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group" style="margin-top:50px">
+        @Html.LabelFor(model => model.NumberOfBeds, htmlAttributes: new { @class = "control-label col-sm-2"})
+        <div class="col-sm-10">
+            @Html.EditorFor(model => model.NumberOfBeds, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.NumberOfBeds, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group" style="margin-top:50px">
+        @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @Html.EditorFor(model => model.Category, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group" style="margin-top:50px">
+        @Html.LabelFor(model => model.ArrivalTime, htmlAttributes: new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @Html.EditorFor(model => model.ArrivalTime, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ArrivalTime, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group" style="margin-top:50px">
+        @Html.LabelFor(model => model.DepartureTime, htmlAttributes: new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @Html.EditorFor(model => model.DepartureTime, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DepartureTime, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div  style="margin-top:50px">
+            <input type="submit" value="Створити" class="btn btn-block" />
+    </div>
+</div>
+}
+
